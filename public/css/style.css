@@ -1,0 +1,176 @@
+﻿@import url(sanitize.css);
+@import url('https://fonts.googleapis.com/css?family=Sriracha&display=swap');
+
+body
+{
+    background-color:#f0f0f0;
+    padding:10px;
+    font-size:14px;
+    color:#666;
+}
+
+.container{
+    width:1000px;
+    margin:0 auto;
+    box-shadow:#808080 1px;
+    background-color:aliceblue;
+    border-radius:10px;
+}
+
+
+header img{
+    width:1000px;
+    height:200px;
+}
+
+h1{
+    margin:50px 10px 50px 10px;
+    /*position:absolute;
+    /*color:white;*/
+}
+.main{
+    float:left;
+}
+
+#map {
+    width: 550px;
+    height: 400px;
+    background-color: white;
+    margin: 20px 10px 10px 10px;
+}
+
+.information {
+    background-color: white;
+    border-radius: 3px;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-left:10px;
+    box-shadow: 0 0 8px rgba(0,0,0,.4);
+    width:550px;
+}
+
+.information p{
+    padding-top:5px;
+    padding-left:5px;
+}
+
+.side {
+    background-color: aliceblue;
+    float: right;
+    width: 400px;
+    height:100%;
+    box-shadow: 0 0 8px rgba(0,0,0,.4);
+    margin:20px 20px 10px 10px;
+}
+
+.side h2{
+    margin-left:1.2em;
+}
+
+#name{
+    border: none;
+    border-bottom:1px solid #808080;
+    padding:8px;
+    background-color:aliceblue;
+    width:250px;
+    margin-left:1.2em;
+}
+
+#add {
+    border: none;
+    background-color: #2ef4e7;
+    border-radius: 3px;
+    color: white;
+    padding: 10px;
+    margin-left:10px;
+    box-shadow: 0 0 3px rgba(0,0,0,.4);
+}
+#delete {
+    border: none;
+    background-color: rgba(255, 26, 26, 0.73);
+    border-radius: 3px;
+    color: white;
+    padding: 10px;
+    margin-left: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,.4);
+}
+#all_delete {
+    border: none;
+    background-color: rgba(255, 26, 26, 0.73);
+    border-radius: 3px;
+    color: white;
+    padding: 10px;
+    margin-right: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,.4);
+    float:right;
+}
+#schedule {
+    border: none;
+    background-color: #2ef4e7;
+    border-radius: 3px;
+    color: white;
+    padding: 10px;
+    margin-right: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,.4);
+    margin-bottom:10px;
+    float:right;
+}
+
+.spot_list{
+    margin:50px 10px 10px 10px;
+    padding:10px;
+    background-color:rgba(248, 225, 196, 0.75);
+    height:100%;
+    border-radius:5px;
+}
+
+.spot_list li{
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:5px;
+    border-bottom:1px solid;
+    width:90%;
+}
+
+.spot_list li:hover{
+    color:orange;
+}
+
+footer{
+    clear:both;
+    background-color:black;
+    text-align:center;
+    color:white;
+}
+
+@media  screen and (max-width:767px){
+    header img{
+        max-width:500px;
+    }
+
+    .container{
+        max-width:500px;
+        height:100%;
+    }
+
+    .main{
+        /*float:none;*/
+        display:block;
+        margin-left:20px;
+        margin-right:10px;
+    }
+    #map{
+        max-width:450px;
+    }
+
+    .information{
+        width:95%;
+        margin-left:10px;
+    }
+
+    .side{
+        display:block;
+        width:90%;
+        margin-top:10px;
+    }
+}
