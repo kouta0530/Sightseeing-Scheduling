@@ -22,6 +22,6 @@
 
 スケジュールボタンを押すと地名の座標を基準に行く順番を並び替えてくれます。
 
-##公開先
+## 公開先
 
-<a href = "https://sightseeingscheduling.web.app/">Firebase</a>
+<a href = "https://sightseeingscheduling.web.app/">https://sightseeingscheduling.web.app</a>
