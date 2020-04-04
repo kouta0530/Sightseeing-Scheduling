@@ -17,12 +17,16 @@
 <img src = "./public/img/img2.png" width = "600px" height ="400px">
 
 サイドバーの中にある検索バーに地名を入力し追加ボタンを押してください
+<br>
 リストの中に地名が追加されます。
+<br>
+<br>
 
 <img src = "./public/img/img3.png" width = "600px" height ="400px">
 
 
 リスト内の地名をクリックするとgoolemapは地名周辺を描写します。
+<br>
 スケジュールボタンを押すと地名の座標を基準に行く順番を並び替えてくれます。
 
 ## 公開先
