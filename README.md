@@ -14,12 +14,12 @@
 
 <h2>使い方</h2>
 
-<img src = "./public/img/img2.png" width = "750px" height ="600px">
+<img src = "./public/img/img2.png" width = "600px" height ="400px">
 
 サイドバーの中にある検索バーに地名を入力し追加ボタンを押してください
 リストの中に地名が追加されます。
 
-<img src = "./public/img/img3.png" width = "750px" height ="600px">
+<img src = "./public/img/img3.png" width = "600px" height ="400px">
 
 
 リスト内の地名をクリックするとgoolemapは地名周辺を描写します。
