@@ -32,3 +32,4 @@
 ## 公開先
 
 <a href = "https://sightseeingscheduling.web.app/">https://sightseeingscheduling.web.app</a>
+<a href = "https://sightseeingscheduling.firebaseapp.com/">https://sightseeingscheduling.firebaseapp.com/</a>
