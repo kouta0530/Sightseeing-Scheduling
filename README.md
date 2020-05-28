@@ -26,11 +26,16 @@
 
 
 リスト内の地名をクリックするとgoolemapは地名周辺を描写します。
-<br>
+  
 スケジュールボタンを押すと地名の座標を基準に行く順番を並び替えてくれます。
 
-## 公開先
+## なぜ作ったか
+友達と旅行に行く計画を立てる時、どの順番で観光地を見て回るか
+決まらない時があったため
 
-<a href = "https://sightseeingscheduling.web.app/">https://sightseeingscheduling.web.app</a>
-<br>
-<a href = "https://sightseeingscheduling.firebaseapp.com/">https://sightseeingscheduling.firebaseapp.com/</a>
+## どう解決したか
+googleMapApiとgeoDecoderライブラリを使って座標や地名を取得し、比較することで
+順番を決めて解決しました
+
+## こちらで実際に公開しています
+https://sightseeingscheduling.web.app/
