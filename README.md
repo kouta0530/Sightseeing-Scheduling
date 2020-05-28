@@ -17,11 +17,10 @@
 <img src = "./public/img/img2.png" width = "600px" height ="400px">
 
 サイドバーの中にある検索バーに地名を入力し追加ボタンを押してください
-<br>
+  
 リストの中に地名が追加されます。
-<br>
-<br>
-
+  
+   
 <img src = "./public/img/img3.png" width = "600px" height ="400px">
 
 
@@ -33,9 +32,11 @@
 友達と旅行に行く計画を立てる時、どの順番で観光地を見て回るか
 決まらない時があったため
 
+  
 ## どう解決したか
 googleMapApiとgeoDecoderライブラリを使って座標や地名を取得し、比較することで
 順番を決めて解決しました
 
+  
 ## こちらで実際に公開しています
 https://sightseeingscheduling.web.app/
