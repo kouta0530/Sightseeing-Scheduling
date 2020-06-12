@@ -63,7 +63,7 @@ body .container .side .spot_list {
 body .container .side .spot_list li {
   border-bottom: 1px solid;
   padding: 5px;
-  width: 50%;
+  width: 80%;
 }
 
 body .container .side .spot_list li:hover {

@@ -1,5 +1,5 @@
-let Options = {
-    zoom: 15,      //地図の縮尺値
+const Options = {
+    zoom: 18,      //地図の縮尺値
     center: {lat: 35.6811673, lng: 139.7670516},    //地図の中心座標
     mapTypeId: 'roadmap'   //地図の種類
 };
@@ -8,8 +8,28 @@ let Options = {
 function initMap(Options){
     const target = document.getElementById('map')
     const map = new google.maps.Map(target, Options);
+    map.addListener("click",e =>{
+        console.log(e);
+        side.address(e.latLng);
+        //Search(e.latLng);
+    });
 }
+/*マップをクリックすると住所を特定する*/
+const Search = (latLng,mapArray) =>{
+    const geocoder = new google.maps.Geocoder();     
+    const point = {"lat":latLng.lat(), "lng":latLng.lng()};
 
+    geocoder.geocode({ location: point },function(results,status){           
+        if (status === google.maps.GeocoderStatus.OK) {
+            const address = results[0].formatted_address;
+            console.log(address);
+            createMapDataPushArray(address,point,mapArray);
+        }
+        else{
+            alert("地名を追加できませんでした");
+        };
+    });
+}
 
 /*地名->地名+座標データ*/
 const judgeMapPoint = (name,mapArray) =>{

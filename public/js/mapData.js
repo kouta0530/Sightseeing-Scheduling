@@ -22,9 +22,3 @@ class MapData{
 
 };
 
-const information = new Vue({
-    el:".information",
-    data:{
-        message:"行きたいところを検索バーに入力して追加してください。スケジュールボタンを押すとリスト内の観光地を並び替えて,おすすめの順番を教えてくれます."
-    }
-});

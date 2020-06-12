@@ -1,4 +1,4 @@
-var sideMenu = new Vue({
+var side = new Vue({
     el:".side",
     data:{
         name: "",
@@ -15,6 +15,9 @@ var sideMenu = new Vue({
         add(name){
             this.name = name;
             judgeMapPoint(this.name,this.mapArray);
+        },
+        address(latlng){
+            Search(latlng,this.mapArray);
         },
         select(name){
             this.name = name;
