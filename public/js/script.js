@@ -13,6 +13,11 @@ function initMap(Options){
         side.address(e.latLng);
         //Search(e.latLng);
     });
+    const marker = new google.maps.Marker({
+        position:Options.center,
+        map:map
+    });
+
 }
 /*マップをクリックすると住所を特定する*/
 const Search = (latLng,mapArray) =>{
