@@ -1,10 +1,11 @@
+/*
 const Options = {
     zoom: 18,      //地図の縮尺値
     center: {lat: 35.6811673, lng: 139.7670516},    //地図の中心座標
     mapTypeId: 'roadmap'   //地図の種類
 };
 
-/*マップの生成、埋め込み*/
+マップの生成、埋め込み
 function initMap(Options){
     const target = document.getElementById('map')
     const map = new google.maps.Map(target, Options);
@@ -19,7 +20,10 @@ function initMap(Options){
     });
 
 }
-/*マップをクリックすると住所を特定する*/
+*/
+
+
+/*マップをクリックすると住所を特定する
 const Search = (latLng,mapArray) =>{
     const geocoder = new google.maps.Geocoder();     
     const point = {"lat":latLng.lat(), "lng":latLng.lng()};
@@ -27,7 +31,6 @@ const Search = (latLng,mapArray) =>{
     geocoder.geocode({ location: point },function(results,status){           
         if (status === google.maps.GeocoderStatus.OK) {
             const address = results[0].formatted_address;
-            console.log(address);
             createMapDataPushArray(address,point,mapArray);
         }
         else{
@@ -35,8 +38,9 @@ const Search = (latLng,mapArray) =>{
         };
     });
 }
-
+*/
 /*地名->地名+座標データ*/
+/*
 const judgeMapPoint = (name,mapArray) =>{
     const geocoder = new google.maps.Geocoder();
             
@@ -50,15 +54,17 @@ const judgeMapPoint = (name,mapArray) =>{
         };
     });
 }
+*/
 
-/*観光地のデータをリストに加える*/
+/*観光地のデータをリストに加える
 const createMapDataPushArray =(name,point,mapArray)=>{
     const map_data = new MapData(name,point);
     map_data.setRoute();
             
     mapArray.push(map_data);
 }
-        
+*/      
+
 /*観光地のリストを並び替える*/
 const sortMapArray = (map1,map2) => {
     if(map1.route > map2.route){

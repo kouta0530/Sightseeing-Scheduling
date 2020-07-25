@@ -2,7 +2,9 @@ var side = new Vue({
     el:".side",
     data:{
         name: "",
-        mapArray:[]
+        mapArray:[],
+        point:{"lat":0,"lng":0},
+        address:""
     },
     methods: {
         schedule(){
@@ -12,20 +14,37 @@ var side = new Vue({
         all_delete(){
             this.mapArray.splice(0,this.mapArray.length);
         },
-        add(name){
-            this.name = name;
-            judgeMapPoint(this.name,this.mapArray);
+        add(){
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: this.name },(results,status)=>{           
+                if (status === google.maps.GeocoderStatus.OK) {
+                    this.point = {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
+                }
+                else{
+                    alert('not in:' + name);
+                };
+            });
         },
-        address(latlng){
-            Search(latlng,this.mapArray);
+        clickMap(latlng){
+            const geocoder = new google.maps.Geocoder();     
+            this.point = {"lat":latLng.lat(), "lng":latLng.lng()};
+        
+            geocoder.geocode({ location: this.point },function(results,status){           
+                if (status === google.maps.GeocoderStatus.OK) {
+                    this.address = results[0].formatted_address;
+                }
+                else{
+                    alert("地名を追加できませんでした");
+                };
+            });
         },
         select(name){
             this.name = name;
             const mi = this.searchMapDataIndex();
-            const map = this.mapArray[mi];
-
-            Options.center = map.getPoint();
-            initMap(Options);
+            const mapData = this.mapArray[mi];
+    
+            map.setOption(mapData.getPoint());
+            map.initMap();
             
         },
         /*検索地名があるか照合する (name) => -1 or index　name in MapArray*/ 
@@ -36,6 +55,19 @@ var side = new Vue({
                 }
             }
             return -1;
+        }
+    },
+    watch:{
+        point:function(point){
+            const map_data = new MapData(this.name,point);
+            map_data.setRoute();
+            this.mapArray.push(map_data);
+        },
+        address:function(address){
+            console.log(address)
+            const map_data = new MapData(address,this.point);
+            map_data.setRoute();
+            this.mapArray.push(map_data);
         }
     }
 });

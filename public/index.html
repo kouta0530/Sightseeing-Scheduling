@@ -19,34 +19,34 @@
 
     <div class="container">
         <div class="main">
-            <div id="map"></div>
+            <div ref = "map" id="map"></div>
             <div class="information">
-                <p>{{message}}</p>
+                <p v-html = "message"></p>
             </div>
         </div>
         
         <div class="side">
             <h2>地名を入力してください</h2>
             <input type="text" name="地名" id="name" v-model = "name">
-            <input type="button" value="追加" id="add" v-on:click = "add(name)">
+            <input type="button" value="追加" id="add" @click = "add()">
             <div class="spot_list">
                 <h2>行きたいところリスト</h2>
                 <ul id="list" v-for = "(map) in mapArray">
-                    <li v-on:click = "select(map.getName())">{{map.getName()}}</li>
+                    <li @click = "select(map.getName())">{{map.getName()}}</li>
                 </ul>
             </div>
-            <input type="button" value="スケジュール" id="schedule" v-on:click = "schedule()">
-            <input type="button" value="リストを空に" id="all_delete" v-on:click = "all_delete()">
+            <input type="button" value="スケジュール" id="schedule" @click = "schedule()">
+            <input type="button" value="リストを空に" id="all_delete" @click = "all_delete()">
         </div>
 
     </div>
     <footer>
         &copy; kouta osaki
     </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNa1PRt4-2mlnxyig_A2fHJzof-FN4FF0&language=ja&"></script>
     <script src = "js/map.js"></script>
     <script src = "js/script.js"></script>
     <script src = "js/mapData.js"></script>
     <script src = "js/side.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNa1PRt4-2mlnxyig_A2fHJzof-FN4FF0&language=ja&callback=initMap"></script>
 </body>
 </html>
