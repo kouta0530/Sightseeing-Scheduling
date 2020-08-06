@@ -4,7 +4,8 @@ var side = new Vue({
         name: "",
         mapArray:[],
         point:{"lat":0,"lng":0},
-        address:""
+        latlng:{"lat":0,"lng":0},
+        address:"",
     },
     methods: {
         schedule(){
@@ -18,19 +19,20 @@ var side = new Vue({
             const geocoder = new google.maps.Geocoder();
             geocoder.geocode({ address: this.name },(results,status)=>{           
                 if (status === google.maps.GeocoderStatus.OK) {
-                    this.point = {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
+                    this.latlng = {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
+
                 }
                 else{
-                    alert('not in:' + name);
+                    alert('not in:' + this.name);
                 };
             });
         },
-        clickMap(latlng){
+        clickMap(latLng){
             const geocoder = new google.maps.Geocoder();     
-            this.point = {"lat":latLng.lat(), "lng":latLng.lng()};
-        
-            geocoder.geocode({ location: this.point },function(results,status){           
+            const point = {"lat":latLng.lat(), "lng":latLng.lng()};
+            geocoder.geocode({ location: point },function(results,status){           
                 if (status === google.maps.GeocoderStatus.OK) {
+                    this.point = point;
                     this.address = results[0].formatted_address;
                 }
                 else{
@@ -58,16 +60,19 @@ var side = new Vue({
         }
     },
     watch:{
-        point:function(point){
-            const map_data = new MapData(this.name,point);
+        name:function(data){
+            console.log(data);
+        },
+        address:function(address){
+            const map_data = new MapData(this.address,this.point);
+            const array = this.mapArray;
+            map_data.setRoute();
+            array.push(map_data);
+        },
+        latlng:function(latlng){
+            const map_data = new MapData(this.name,latlng);
             map_data.setRoute();
             this.mapArray.push(map_data);
         },
-        address:function(address){
-            console.log(address)
-            const map_data = new MapData(address,this.point);
-            map_data.setRoute();
-            this.mapArray.push(map_data);
-        }
     }
 });

@@ -6,7 +6,7 @@ var map = new Vue({
         lng: 139.7670516,
         Options:{
             zoom: 15,      //地図の縮尺値
-            center: {lat: this.lat, lng: this.lng},    //地図の中心座標
+            center: {lat: 35.6811673, lng: 139.7670516},    //地図の中心座標
             mapTypeId: 'roadmap'   //地図の種類
         },
         map:null
@@ -21,9 +21,10 @@ var map = new Vue({
                 map:this.map
             });
             this.map.addListener("click",(e)=>{
-                this.clickOnMap(e);
+                side.clickMap(e.latLng);
             });
         },
+
         clickOnMap(event){
             //this.initMap();
             side.clickMap(event.latLng);
