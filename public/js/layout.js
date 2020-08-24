@@ -1,3 +1,4 @@
+
 /*
 $(document).on("click","#add",function(){
     const name = $("#name").val();
@@ -42,14 +43,18 @@ $("#schedule").click(function(){
 });
 */
 
+/*
 const add = document.getElementById("add");
 const all_delete = document.getElementById("all_delete");
 const schedule = document.getElementById("schedule");
 
+
+
 add.addEventListener("click",e => {
     const name = document.getElementById("name");
-    judgeMapPoint(name.value);
-
+    const point = async(judgeMapPoint(name.value));
+    console.log(point);
+    createMapDataPushArray(name,point);
 });
 
 all_delete.addEventListener("click",e =>{
@@ -68,7 +73,8 @@ schedule.addEventListener("click",e =>{
     alert("観光地の順番を並び替えました");
 });
 
-/*リストを描写する*/
+
+/*リストを描写する
 const writeMapData = (map) =>{
     const list = document.getElementById("list");
     let new_map_data  = document.createElement("li");
@@ -79,18 +85,19 @@ const writeMapData = (map) =>{
     });
     
     list.appendChild(new_map_data);
-
-    /*$("#list").append('<li>'+ map.getName() /*+ '<button id = "delete">削除</button></li>');*/
 }
-/*リストを空にする*/ 
+*/
+
+/*リストを空にする
 const delete_list = () =>{
     let list = document.getElementById("list");
     while(list.lastChild){
         list.removeChild(list.lastChild);
     }
 }
+*/
 
-/*クリックした地名を表示する*/
+/*クリックした地名を表示する
 const show_map_Data = (mapName) =>{
     const name = mapName;
     const mi = searchMapDataIndex(name);
@@ -99,3 +106,4 @@ const show_map_Data = (mapName) =>{
     Options.center = map.getPoint();
     initMap(Options);
 }
+*/
