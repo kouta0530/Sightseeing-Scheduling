@@ -10,24 +10,25 @@ var map = new Vue({
             mapTypeId: 'roadmap'   //地図の種類
         },
         map:null
-
     },
     methods:{
         initMap(){
             this.target = this.$refs.map;
             this.map = new google.maps.Map(this.target, this.Options);
+            
             const marker = new google.maps.Marker({
                 position:this.Options.center,
                 map:this.map
             });
             this.map.addListener("click",(e)=>{
-                side.clickMap(e.latLng);
+                this.clickOnMap(e.latLng);
             });
         },
 
-        clickOnMap(event){
-            //this.initMap();
-            side.clickMap(event.latLng);
+        clickOnMap(latLng){
+            side.clickMapDataAdd(latLng);
+            this.map.panTo({lat:latLng.lat(),lng:latLng.lng()});
+
         },
 
         setOption(Options){

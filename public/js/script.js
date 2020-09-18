@@ -75,6 +75,29 @@ const sortMapArray = (map1,map2) => {
     }
 }
 
+const Search_with_name = (name,geocoder,array) => {
+    geocoder.geocode({ address: name },(results,status)=>{           
+        if (status === google.maps.GeocoderStatus.OK) {
+            const point =  {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
+            const map_data = new MapData(name,point);
+            array.push(map_data);
+        }
+        else{
+            alert('not in:', name);
+        }
+    });
+}
 
+const Search_with_latlng = (latlng,geocoder,array)=>{
 
-
+    geocoder.geocode({ location: latlng },function(results,status){           
+        if (status === google.maps.GeocoderStatus.OK) {
+            const address = results[0].formatted_address;
+            const map_data = new MapData(address,latlng);
+            array.push(map_data);
+        }
+        else{
+            alert("地名を追加できませんでした");
+        };
+    });
+}
