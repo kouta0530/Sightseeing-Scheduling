@@ -78,6 +78,7 @@ const sortMapArray = (map1,map2) => {
 const Search_with_name = (name,geocoder,array) => {
     geocoder.geocode({ address: name },(results,status)=>{           
         if (status === google.maps.GeocoderStatus.OK) {
+            console.log(results);
             const point =  {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
             const map_data = new MapData(name,point);
             array.push(map_data);
@@ -92,6 +93,7 @@ const Search_with_latlng = (latlng,geocoder,array)=>{
 
     geocoder.geocode({ location: latlng },function(results,status){           
         if (status === google.maps.GeocoderStatus.OK) {
+            console.log(results);
             const address = results[0].formatted_address;
             const map_data = new MapData(address,latlng);
             array.push(map_data);
@@ -99,5 +101,32 @@ const Search_with_latlng = (latlng,geocoder,array)=>{
         else{
             alert("地名を追加できませんでした");
         };
+    });
+}
+
+const get_route = (start,goal,waypoint) => {
+    const req = {
+        origin : start, 
+        destination : goal, 
+        waypoints: waypoint,
+        travelMode : "WALKING"
+    };
+
+    const r = new google.maps.DirectionsService();
+    r.route(req,(result,status)=>{
+        console.log(result);
+    });
+}
+
+const get_place_name = (address,map,array) =>{
+    const req = {
+        location:address,
+        radius:10,
+    };
+    const p = new google.maps.places.PlacesService(map);
+    p.nearbySearch(req,(result,status)=>{
+        const name = result[1].name;
+        const map_data = new MapData(name,address);
+        array.push(map_data)
     });
 }
