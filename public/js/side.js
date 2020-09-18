@@ -17,28 +17,12 @@ var side = new Vue({
         },
         add(){
             const geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ address: this.name },(results,status)=>{           
-                if (status === google.maps.GeocoderStatus.OK) {
-                    this.latlng = {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
-
-                }
-                else{
-                    alert('not in:' + this.name);
-                };
-            });
+            Search_with_name(this.name,geocoder,this.mapArray);
         },
-        clickMap(latLng){
-            const geocoder = new google.maps.Geocoder();     
-            const point = {"lat":latLng.lat(), "lng":latLng.lng()};
-            geocoder.geocode({ location: point },function(results,status){           
-                if (status === google.maps.GeocoderStatus.OK) {
-                    this.point = point;
-                    this.address = results[0].formatted_address;
-                }
-                else{
-                    alert("地名を追加できませんでした");
-                };
-            });
+        clickMapDataAdd(latLng){ 
+            const geocoder = new google.maps.Geocoder();    
+            this.point = {"lat":latLng.lat(), "lng":latLng.lng()};
+            Search_with_latlng(this.point,geocoder,this.mapArray);
         },
         select(name){
             this.name = name;
@@ -60,19 +44,14 @@ var side = new Vue({
         }
     },
     watch:{
-        name:function(data){
-            console.log(data);
-        },
+        /*
         address:function(address){
             const map_data = new MapData(this.address,this.point);
             const array = this.mapArray;
             map_data.setRoute();
-            array.push(map_data);
-        },
-        latlng:function(latlng){
-            const map_data = new MapData(this.name,latlng);
-            map_data.setRoute();
             this.mapArray.push(map_data);
+            console.log("add");
         },
+        */
     }
 });
