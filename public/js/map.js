@@ -5,7 +5,7 @@ var map = new Vue({
         lat: 35.6811673,
         lng: 139.7670516,
         Options:{
-            zoom: 15,      //地図の縮尺値
+            zoom: 20,      //地図の縮尺値
             center: {lat: 35.6811673, lng: 139.7670516},    //地図の中心座標
             mapTypeId: 'roadmap'   //地図の種類
         },

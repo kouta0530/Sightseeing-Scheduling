@@ -81,6 +81,7 @@ const Search_with_name = (name,geocoder,array) => {
             console.log(results);
             const point =  {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
             const map_data = new MapData(name,point);
+            map_data.setRoute();
             array.push(map_data);
         }
         else{
@@ -96,6 +97,7 @@ const Search_with_latlng = (latlng,geocoder,array)=>{
             console.log(results);
             const address = results[0].formatted_address;
             const map_data = new MapData(address,latlng);
+            map_data.setRoute();
             array.push(map_data);
         }
         else{
@@ -121,12 +123,14 @@ const get_route = (start,goal,waypoint) => {
 const get_place_name = (address,map,array) =>{
     const req = {
         location:address,
-        radius:10,
+        radius:5,
     };
     const p = new google.maps.places.PlacesService(map);
     p.nearbySearch(req,(result,status)=>{
+        console.log(result);
         const name = result[1].name;
         const map_data = new MapData(name,address);
+        map_data.setRoute();
         array.push(map_data)
     });
 }
